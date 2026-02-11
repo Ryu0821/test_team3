@@ -1,0 +1,99 @@
+:root {
+  --bg-color: #f8f9fa;
+  --primary-black: #111;
+  --gray-text: #888;
+  --card-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.art-log-container {
+  max-width: 480px;
+  margin: 0 auto;
+  background-color: #fff;
+  font-family: 'Pretendard', sans-serif;
+  padding: 20px 20px 100px 20px;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo { font-size: 28px; font-weight: 900; font-style: italic; }
+.subtitle { font-size: 14px; color: var(--gray-text); margin-top: 5px; margin-bottom: 30px; }
+
+/* AI Banner */
+.ai-banner {
+  background: #fff;
+  border-radius: 30px;
+  padding: 30px;
+  box-shadow: var(--card-shadow);
+  border: 1px solid #eee;
+  margin-bottom: 40px;
+  text-align: center;
+}
+.ai-badge { font-size: 12px; font-weight: bold; color: #a0a0a0; margin-bottom: 20px; letter-spacing: 1px; }
+.ai-title { font-size: 24px; font-weight: bold; margin-bottom: 15px; line-height: 1.4; }
+.ai-desc { font-size: 14px; color: #666; margin-bottom: 25px; line-height: 1.6; padding: 0 10px; }
+.cta-button {
+  background: #000; color: #fff; border: none; padding: 15px 30px; border-radius: 50px;
+  font-weight: bold; width: 100%; display: flex; justify-content: center; gap: 10px;
+}
+.update-time { font-size: 12px; color: #ccc; margin-top: 15px; font-weight: bold; }
+
+/* Section Common */
+.section { margin-bottom: 40px; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 20px; }
+.section-header h3 { font-size: 20px; font-weight: bold; }
+.eng-sub { display: block; font-size: 11px; color: #aaa; margin-top: 4px; }
+.view-all { background: none; border: none; color: #999; font-weight: bold; font-size: 12px; }
+
+/* Trending Horizontal Scroll */
+.horizontal-scroll { display: flex; overflow-x: auto; gap: 20px; padding-bottom: 10px; scrollbar-width: none; }
+.exhibit-card { min-width: 280px; }
+.exhibit-image { 
+  height: 380px; background: #e0e0e0; border-radius: 20px; position: relative;
+  background-image: url('https://via.placeholder.com/280x380'); background-size: cover;
+}
+.tags { position: absolute; bottom: 15px; left: 15px; display: flex; gap: 5px; }
+.tag { background: rgba(255,255,255,0.9); padding: 4px 8px; border-radius: 5px; font-size: 11px; font-weight: bold; }
+.exhibit-info h4 { margin-top: 15px; font-size: 18px; }
+.author { color: #888; font-size: 14px; margin-top: 5px; }
+.location { font-size: 12px; color: #aaa; margin-top: 5px; }
+
+/* Docent List */
+.docent-card {
+  display: flex; align-items: center; padding: 15px; border-radius: 20px;
+  border: 1px solid #f0f0f0; margin-bottom: 15px;
+}
+.docent-avatar { width: 60px; height: 60px; background: #f5f5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; margin-right: 15px; }
+.docent-info { flex: 1; }
+.docent-header { display: flex; justify-content: space-between; margin-bottom: 4px; }
+.docent-name { font-weight: bold; font-size: 15px; }
+.docent-rating { font-size: 12px; color: #ffcc00; }
+.docent-sub { font-size: 12px; color: #888; }
+.docent-price { font-weight: bold; margin-top: 8px; font-size: 14px; }
+.docent-btn { background: #111; color: #fff; border: none; padding: 8px 12px; border-radius: 8px; font-size: 12px; font-weight: bold; }
+.ai-btn { background: #111; }
+
+/* Course Card */
+.course-card {
+  background: #fff; border: 1px solid #f0f0f0; padding: 25px; border-radius: 25px;
+  display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;
+}
+.course-tag { background: #f0f2f5; padding: 4px 10px; border-radius: 5px; font-size: 11px; color: #888; font-weight: bold; }
+.course-card h4 { font-size: 18px; margin: 10px 0; }
+.course-card p { font-size: 13px; color: #aaa; line-height: 1.4; }
+.course-icon { background: #000; color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+
+/* Bottom Nav */
+.bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  width: 100%; max-width: 480px; height: 80px; background: #fff;
+  display: flex; justify-content: space-around; align-items: center;
+  border-top: 1px solid #eee; padding-bottom: 10px;
+}
+.nav-item { display: flex; flex-direction: column; align-items: center; font-size: 20px; color: #ccc; }
+.nav-item span { font-size: 11px; margin-top: 4px; color: #aaa; }
+.nav-item.active { color: #000; }
+.nav-item.active span { color: #000; font-weight: bold; }
