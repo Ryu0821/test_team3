@@ -1,0 +1,116 @@
+/* 1. 기본 초기화 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f0f0f0; /* 배경을 회색으로 해서 앱 영역을 강조 */
+    font-family: 'Pretendard', sans-serif;
+}
+
+/* 2. 앱 컨테이너 (중앙 정렬 및 모바일 비율) */
+.app-container {
+    max-width: 414px; /* 아이폰 사이즈 */
+    margin: 0 auto;
+    min-height: 100vh;
+    background-color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 3. 헤더 영역 */
+.header {
+    padding: 24px 20px;
+}
+.header h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: #1a1a1a;
+}
+.header p {
+    font-size: 14px;
+    color: #888;
+    margin-top: 4px;
+}
+
+/* 4. 가로 스크롤 섹션 (핵심!) */
+.section {
+    padding: 20px 0 20px 20px;
+}
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 20px;
+    margin-bottom: 16px;
+}
+
+.card-container {
+    display: flex; /* 가로로 나열 */
+    gap: 16px;
+    overflow-x: auto; /* 가로 스크롤 가능하게 */
+    padding-bottom: 10px;
+    scrollbar-width: none; /* 파이어폭스 스크롤바 숨김 */
+}
+.card-container::-webkit-scrollbar {
+    display: none;
+} /* 크롬 스크롤바 숨김 */
+
+/* 5. 개별 카드 디자인 */
+.art-card {
+    min-width: 280px; /* 카드의 고정 너비 */
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+}
+
+.card-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover; /* 이미지가 찌그러지지 않게 */
+}
+
+.card-content {
+    padding: 16px;
+}
+.card-content h3 {
+    font-size: 18px;
+    margin-bottom: 8px;
+}
+.card-content p {
+    color: #666;
+    font-size: 14px;
+}
+
+/* 6. 태그 스타일 */
+.tag-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.tag {
+    background: #f0f2ff;
+    color: #5d6dff;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* 7. 하단 네비게이션 (고정) */
+.bottom-nav {
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+    height: 80px;
+    background: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-bottom: 20px;
+}
