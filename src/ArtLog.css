@@ -10,15 +10,16 @@
   margin: 0 auto;
   background-color: #fff;
   font-family: 'Pretendard', sans-serif;
-  /* 🚩 수정: 하단 100px 패딩을 0으로 바꿉니다. */
-  padding: 20px 20px 0 20px; 
+  padding: 0; /* 내부 패딩 제거 */
   height: 100vh;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* 전체 바깥 스크롤 방지 */
+  
+  /* 🚩 수정: 여기서 스크롤을 막지 말고, 내부에서 결정하게 합니다. */
+  overflow: hidden; 
+  position: relative;
   box-sizing: border-box;
 }
-
 
 /* Header */
 /* 상단 로고와 아이콘을 양옆으로 찢어줌 */
@@ -1291,4 +1292,24 @@
 /* 3. 파이어폭스 브라우저에서 스크롤바 숨기기 */
 .hide-scrollbar {
   scrollbar-width: none;
+}
+
+.course-container {
+  flex: 1; 
+  overflow-y: auto !important; /* 종로까지 스크롤 가능하게! */
+  height: calc(100vh - 70px); /* 하단바 높이 제외 */
+  padding-bottom: 120px;
+}
+
+.course-card-main:last-child {
+  margin-bottom: 60px; 
+}
+
+.course-container::after {
+  content: "모든 코스를 확인했습니다 ✨";
+  display: block;
+  text-align: center;
+  font-size: 13px;
+  color: #ccc;
+  padding: 40px 0;
 }

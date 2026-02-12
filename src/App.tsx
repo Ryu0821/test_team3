@@ -1,19 +1,21 @@
-import React, { useState, useRef, useEffect } from 'react'; // 👈 useEffect 추가!!
+import React, { useState, useRef, useEffect } from 'react';
 import './ArtLog.css';
 import './Login.css';
 import MyPage from './MyPage';
+import RootPage from './Root'; // 👈 RootPage를 import 했습니다.
 import LoginPage from "./LoginPage";
 import Giftshop from './GiftShop';
-import MapPage from "./Map.tsx"; // 뒤에 .tsx를 붙여보세요.
+import MapPage from "./Map.tsx"; 
 import { 
   Home, Map, Mic, Compass, Bell, User, Heart,
   X, Sparkles, CheckCircle2, ChevronRight, MapPin,
   Gift
 } from 'lucide-react';
+
 // --- [컴포넌트 1] 취향 선택 화면 ---
 const PreferenceSelection = ({ onComplete }: { onComplete: () => void }) => {
   const [selected, setSelected] = useState<string[]>([]);
-  const [toast, setToast] = useState(false); // 토스트 표시 여부 상태
+  const [toast, setToast] = useState(false);
 
   const tags = [
     "#미디어아트", "#추상화", "#사진전", "#미니멀리즘", 
@@ -23,14 +25,12 @@ const PreferenceSelection = ({ onComplete }: { onComplete: () => void }) => {
     "#아트페어", "#오브제", "#한국화"
   ];
 
-  // 1. 화면이 켜지자마자 실행되는 효과
   useEffect(() => {
-    setToast(true); // 메시지 보여주기
+    setToast(true);
     const timer = setTimeout(() => {
-      setToast(false); // 2초 뒤에 숨기기
+      setToast(false);
     }, 2000);
-
-    return () => clearTimeout(timer); // 컴포넌트가 사라질 때 타이머 청소
+    return () => clearTimeout(timer);
   }, []);
 
   const toggleTag = (tag: string) => {
@@ -39,21 +39,13 @@ const PreferenceSelection = ({ onComplete }: { onComplete: () => void }) => {
 
   return (
     <div className="onboarding-container" style={{ position: 'relative' }}>
-      
-      {/* 2. 환영 메시지 (토스트) UI */}
-      {toast && (
-        <div className="welcome-toast">
-          환영합니다!
-        </div>
-      )}
-
+      {toast && <div className="welcome-toast">환영합니다!</div>}
       <div className="onboarding-header">
         <div className="progress-bar-container">
           <div className="progress-bar-fill" style={{ width: '40%' }}></div>
         </div>
         <span className="skip-text" onClick={onComplete}>건너뛰기</span>
       </div>
-
       <div className="onboarding-content">
         <h2 className="onboarding-title">어떤 스타일에<br />관심이 있으신가요?</h2>
         <div className="tag-grid">
@@ -68,7 +60,6 @@ const PreferenceSelection = ({ onComplete }: { onComplete: () => void }) => {
           ))}
         </div>
       </div>
-
       <button 
         className={`submit-btn ${selected.length > 0 ? 'active' : ''}`} 
         disabled={selected.length === 0} 
@@ -79,6 +70,7 @@ const PreferenceSelection = ({ onComplete }: { onComplete: () => void }) => {
     </div>
   );
 };
+
 // --- [컴포넌트 3] 화제 전시 카드 ---
 const ExhibitCard = ({ title, location, tag, imgUrl }: any) => {
   const [liked, setLiked] = useState(false);
@@ -123,8 +115,6 @@ export default function App() {
   const [step, setStep] = useState('login'); 
   const [activeTab, setActiveTab] = useState('home'); 
   const [isNotifyOpen, setIsNotifyOpen] = useState(false);
-  
-  // 전역 로그인 상태 관리
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const [notifications, setNotifications] = useState([
@@ -145,6 +135,7 @@ export default function App() {
 
   return (
     <div className="art-log-container">
+      {/* 화면 렌더링 조건문 수정 */}
       {activeTab === 'home' ? (
         <>
           <header className="header">
@@ -167,7 +158,6 @@ export default function App() {
               <button className="cta-button">추천 전시 보기 <ChevronRight size={20} className="cta-icon" /></button>
             </section>
               
-            {/* 화제 전시 섹션 */}
             <section className="section">
               <div className="section-header">
                 <h3>지금 화제인 전시</h3>
@@ -180,7 +170,6 @@ export default function App() {
               </ExhibitCarousel>
             </section>
 
-            {/* 프리미엄 도슨트 섹션 */}
             <section className="section">
               <div className="section-header">
                 <div className="title-group">
@@ -217,7 +206,6 @@ export default function App() {
               </div>
             </section>
 
-            {/* 추천 나들이 코스 섹션 */}
             <section className="section">
               <div className="section-header">
                 <div className="title-group">
@@ -227,19 +215,11 @@ export default function App() {
                 <button className="view-all">전체보기</button>
               </div>
               <div className="course-list">
-                <div className="course-card">
+                <div className="course-card" onClick={() => setActiveTab('course')}> {/* 클릭 시 코스탭으로 이동 */}
                   <div className="course-content">
                     <span className="course-tag">힙 & 트렌디</span>
                     <h4>성수동 힙한 갤러리 투어</h4>
                     <p>영감과 인생샷을 동시에 잡는 MZ세대 맞춤형 코스입니다.</p>
-                  </div>
-                  <div className="course-icon"><Compass size={20} /></div>
-                </div>
-                <div className="course-card">
-                  <div className="course-content">
-                    <span className="course-tag">차분함 & 클래식</span>
-                    <h4>종로의 과거와 현재</h4>
-                    <p>전통의 정취와 현대적 감각이 공존하는 깊이 있는 산책 코스입니다.</p>
                   </div>
                   <div className="course-icon"><Compass size={20} /></div>
                 </div>
@@ -249,6 +229,10 @@ export default function App() {
         </>
       ) : activeTab === 'map' ? (
         <MapPage />
+      ) : activeTab === 'course' ? ( // 👈 "준비중" 대신 RootPage가 나오도록 수정!
+        <RootPage />
+      ) : activeTab === 'gift' ? (
+        <Giftshop />
       ) : activeTab === 'mypage' ? (
         <MyPage 
           isLoggedIn={isLoggedIn}
@@ -258,8 +242,6 @@ export default function App() {
             setActiveTab('home');  
           }} 
         />  
-        ) : activeTab === 'gift' ? (
-        <Giftshop />
       ) : (
         <div style={{padding: '100px 20px', textAlign: 'center'}}>준비 중인 페이지입니다.</div>
       )}
@@ -273,10 +255,15 @@ export default function App() {
           <Map size={24} /><span>지도</span>
         </div>
         <div className="nav-item"><Mic size={24} /><span>가이드</span></div>
-        <div className="nav-item"><Compass size={24} /><span>코스</span></div>
-<div className={`nav-item ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setActiveTab('gift')}>
-    <Gift size={24} /><span>기프트</span>
-  </div>
+        <div 
+          className={`nav-item ${activeTab === 'course' ? 'active' : ''}`} 
+          onClick={() => setActiveTab('course')}
+        >
+          <Compass size={24} /><span>코스</span>
+        </div>
+        <div className={`nav-item ${activeTab === 'gift' ? 'active' : ''}`} onClick={() => setActiveTab('gift')}>
+          <Gift size={24} /><span>기프트</span>
+        </div>
       </nav>
 
       {/* 알림 모달 */}
