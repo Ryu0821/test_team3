@@ -184,7 +184,7 @@ export default function App() {
                   <h3>프리미엄 도슨트</h3>
                   <span className="sub-title">EXPERT CURATION GUIDES</span>
                 </div>
-                <button className="view-all">전체보기</button> /* 나중에 도슨트 만들면 이동 */
+                <button className="view-all">전체보기</button> {/* 추후 도슨트/가이드 탭 활성화 시 탭 이동 로직 추가 필요 */}
               </div>
               <div className="docent-list">
                 <div className="docent-card active-guide">
